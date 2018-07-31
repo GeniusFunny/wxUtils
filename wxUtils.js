@@ -1,4 +1,4 @@
-const FILEURL = ''  //  文件服务器地址
+const fileURL = ''  //  文件服务器地址
 
 const toast = (title = '提示', icon = 'success', duration = 1500, mask = false) => {
   return new Promise((resolve, reject) => {
@@ -73,7 +73,7 @@ const wxLogin = () => {
 const upLoad = (filePath, formData) => {
   return new Promise((resolve, reject) => {
     wx.uploadFile({
-      url: FILEURL,
+      url: fileURL,
       filePath: filePath, //  本地路径名
       name: 'file',
       formData: formData,
@@ -82,8 +82,9 @@ const upLoad = (filePath, formData) => {
     })
   })
 }
+
 const jumpTo = (url) => {
-  let state = url.indexOf('personalCenter') !== -1 || url.indexOf('add') !== -1 || url.indexOf('find') !== -1
+  let state = url.indexOf('homeA') !== -1 || url.indexOf('homeB') !== -1 || url.indexOf('homeC') !== -1
   if (state) {
     wx.switchTab({
       url: url
