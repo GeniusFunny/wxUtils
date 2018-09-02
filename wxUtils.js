@@ -27,11 +27,12 @@ const hideLoading = () => {
   wx.hideLoading()
 }
 
-const modal = (title = '提示', content = '') => {
+const modal = (title = '提示', content = '', showCancel = true) => {
   return new Promise((resolve, reject) => {
     wx.showModal({
       title: title,
       content: content,
+      showCancel: showCancel,
       success: res => {
         if (res.confirm) {
           resolve(res)
@@ -118,6 +119,13 @@ const removeStorage = (...keys) => {
     wx.removeStorageSync(item)
   })
 }
+const warning = (content, title = '警告') => {
+  return wx.showModal({
+    title: title,
+    content: content,
+    showCancel: false
+  })
+}
 export {
   toast, //  提示窗
   showLoading, //  显示加载提示框
@@ -133,5 +141,6 @@ export {
   jumpTo, //  页面跳转,
   redirectTo, // 重置到某一页面,
   navigateBack, // 返回上一页面或多级页面
-  previewImage // 预览图片
+  previewImage, // 预览图片
+  warning
 }
